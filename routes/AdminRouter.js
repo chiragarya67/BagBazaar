@@ -1,8 +1,36 @@
 const express = require('express');
 const router = express.Router();
+const AdminModel = require("../models/AdminModel")
 
-router.get("/", (req, res)=>{
+if (process.env.NODE_ENV === "development") {
+
+    router.post("/create", async (req, res) => {
+        const Admins = await AdminModel.find();
+        if (Admins.length > 0) {
+            return res
+                .status(500)
+                .send("You dont have permission to create new admin");
+        }
+        let { fullname, email, password } = req.body;
+
+        let createdAdmin = await AdminModel.create({
+            fullname,
+            email,
+            password,
+        })
+        res.status(201).send(createdAdmin);
+
+
+    });
+}
+
+
+router.get("/", (req, res) => {
     res.send("working admin")
 });
+
+
+
+
 
 module.exports = router;

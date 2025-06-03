@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
+const dbgr = require("debug")("development:mongoose");
+const config = require("config");
 
-mongoose.connect("mongodb://127.0.0.1:27017/BAGBAZAAR")
+
+mongoose.connect(`${config.get("MONGODB_URI")}/BAGBAZAAR`)
+
 
 .then ( ()=>{
-    console.log("database connected");
+    dbgr("database connected");
 })
 
 .catch( (err)=>{
-    console.log(err);
+    dbgr(err);
 })
 
 

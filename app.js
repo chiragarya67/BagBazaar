@@ -7,7 +7,9 @@ const path = require('path');
 const AdminRouter = require("./routes/AdminRouter")
 const usersRouter = require("./routes/usersRouter")
 const productRouter = require("./routes/productRouter")
+const indexRouter = require("./routes/indexRouter")
 
+require("dotenv").config();
 
 const db = require ("./config/mongoose-connection")
 
@@ -18,9 +20,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 
+app.use("/", indexRouter);
 app.use("/Admin", AdminRouter);
 app.use("/users", usersRouter);
 app.use("/products", productRouter);
+
 
 
 app.listen(3000, () => {    
