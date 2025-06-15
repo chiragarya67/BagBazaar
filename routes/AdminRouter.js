@@ -25,8 +25,9 @@ if (process.env.NODE_ENV === "development") {
 }
 
 
-router.get("/", (req, res) => {
-    res.send("working admin")
+router.get("/adminPanel", (req, res) => {
+    let success = req.flash("success");
+    res.render("createproducts", { success });
 });
 
 
