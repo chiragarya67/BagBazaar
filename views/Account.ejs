@@ -1,0 +1,47 @@
+<%- include("./partials/header") %>
+
+<main class="bg-gray-50 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8">👤 My Account</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <aside class="bg-white border border-gray-200 shadow-sm rounded-xl p-5">
+        <h3 class="text-lg font-semibold mb-4 text-gray-700">Account Menu</h3>
+        <ul class="space-y-3 text-sm text-blue-600">
+          <li><a href="#" class="hover:underline hover:text-black-800 transition">Profile Info</a></li>
+          <li><a href="#" class="hover:underline hover:text-black-800 transition">My Orders</a></li>
+          <li><a href="#" class="hover:underline hover:text-black-800 transition">Wishlist</a></li>
+          <li><a href="/users/logout" class="text-red-600 hover:underline hover:text-red-800 transition">Logout</a></li>
+        </ul>
+      </aside>
+
+      <section class="md:col-span-2 bg-white border border-gray-200 shadow-sm rounded-xl p-6">
+        <h4 class="text-2xl font-semibold mb-6 text-gray-800">Welcome back, <%= user.fullname %> 👋</h4>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 text-sm">
+          <div>
+            <label class="block text-gray-600 mb-1"><i class="ri-user-line mr-1"></i> Full Name</label>
+            <p class="bg-gray-100 border border-gray-200 rounded-md px-4 py-2 text-gray-800"><%= user.fullname %></p>
+          </div>
+          <div>
+            <label class="block text-gray-600 mb-1"><i class="ri-mail-line mr-1"></i>Email</label>
+            <p class="bg-gray-100 border border-gray-200 rounded-md px-4 py-2 text-gray-800"><%= user.email %></p>
+          </div>
+          <div>
+            <label class="block text-gray-600 mb-1"><i class="ri-calendar-line mr-1"></i> Registered On</label>
+            <p class="bg-gray-100 border border-gray-200 rounded-md px-4 py-2 text-gray-800">  <%=  new Intl.DateTimeFormat('en-GB').format(user.createdAt) %> </p>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <a href="#" class="inline-block mt-2 px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 hover:scale-105 shadow transition-all">
+            View My Orders
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<%- include("./partials/footer") %>
