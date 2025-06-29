@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const AdminModel = require("../models/AdminModel")
+const isAdmin = require("../middlewares/isAdmin")
 
 if (process.env.NODE_ENV === "development") {
 
@@ -24,8 +25,7 @@ if (process.env.NODE_ENV === "development") {
     });
 }
 
-
-router.get("/adminPanel", (req, res) => {
+router.post("/adminPanel", (req, res) => {
     let success = req.flash("success");
     res.render("createproducts", { success });
 });

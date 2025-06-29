@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,12 +10,18 @@
 </head>
 
 <body class="font-['helvetica_now_display']">
-    <nav class="w-full flex justify-between px-3 py-3">
+ <nav class=" flex justify-between px-3 py-3">
+
         <h3 class="text-xl">BAG-BAZAAR</h3>
-        <div class="flex gap-5">
-            <a href="">Shop</a>
-            <a href="">Cart</a>
-            <a href="">My Account</a>
-            <a class="text-red-600" href="/users/logout">Logout</a>
+        <% var loggedin = typeof loggedin !== "undefined" ? loggedin : true %>
+        <% if(loggedin) { %>
+         <div class="flex gap-5">
+            <a href="/shop">Shop</a>
+            <a href="/cart">Cart</a>
+            <a href="/Account">My Account</a>
+            <a class="text-red-600" href="/users/logout">logout</a>
+            </div>
+         <% }%>
+
         </div>
     </nav>

@@ -32,6 +32,8 @@ app.use(
 
 app.use(flash());
 
+
+
 app.use("/", indexRouter);
 app.use("/Admin", AdminRouter);
 app.use("/users", usersRouter);

@@ -37,11 +37,11 @@ module.exports.loginUser = async (req, res)=>{
             req.flash("error", "Wrong email or password!");
             return res.redirect("/");
 }
-       bcrypt.compare(password, user.password, (err, result)=>{
+       bcrypt.compare(password, user.password, async(err, result)=>{
        if(result) {
           let token = generateToken(user);
           res.cookie("BAG-BAZAAR", token);
-          res.render("shop");
+          res.redirect("/shop")
        }
      else {
               req.flash("error", "wrong email or pass")
