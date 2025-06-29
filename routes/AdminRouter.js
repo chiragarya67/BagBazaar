@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const AdminModel = require("../models/AdminModel")
-const isAdmin = require("../middlewares/isAdmin")
 
 if (process.env.NODE_ENV === "development") {
 
